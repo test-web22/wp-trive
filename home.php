@@ -176,7 +176,7 @@ Template Name: home
 					</div>
 				</div>
 			</section>
-			<section class="page__trending trending-page">
+			<section id="trend" class="page__trending trending-page">
 				<div class="trending-page__container">
 					<div class="trending-page__content">
 						<h2 id="trending" class="trending-page__title">Trending stories</h2>

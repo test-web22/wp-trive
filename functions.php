@@ -1,6 +1,12 @@
 <?php 
 add_action( 'wp_enqueue_scripts', 'style_theme');
 add_action( 'wp_footer', 'scripts_theme');
+add_action('after_setup_theme', 'nav_menu');	//додати меню
+
+function nav_menu(){
+	register_nav_menu('top', 'header menu');
+	register_nav_menu('footer-info', 'footer menu information');
+}
 
 
 function style_theme() {
