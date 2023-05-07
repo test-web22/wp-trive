@@ -1,0 +1,15 @@
+.not-found{
+	height: 45vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.not-found__title{
+	font-size: 30px;
+	line-height: 1.5;
+
+}
+.not-found__red{
+	font-size: 50px;
+	color: red;
+}
