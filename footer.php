@@ -20,20 +20,11 @@
 				<div class="footer__column">
 					<div class="footer__label">Information</div>
 					<nav class="footer__menu menu-footer">
-						<ul class="menu-footer__list">
-							<li class="menu-footer__item">
-								<a href="#" class="menu-footer__link">Products</a>
-							</li>
-							<li class="menu-footer__item">
-								<a href="#" class="menu-footer__link">About Us</a>
-							</li>
-							<li class="menu-footer__item">
-								<a href="#" class="menu-footer__link">Blog</a>
-							</li>
-							<li class="menu-footer__item">
-								<a href="#" class="menu-footer__link">Enent</a>
-							</li>
-						</ul>
+						<?php wp_nav_menu(array(
+						'theme_location' => 'footer-info',
+						'container' => null,
+						'menu_class' => 'menu-footer__list',//<ul>....</ul>
+							)); ?>
 					</nav>
 				</div>
 				<div class="footer__column">

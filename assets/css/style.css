@@ -104,11 +104,10 @@ body.menu-open {
   flex-direction: column;
 }
 
-[class*=__container] {
+[class*="__container"] {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
-  overflow: clip;
 }
 
 .page {
@@ -130,7 +129,11 @@ body.menu-open {
   left: 0;
   opacity: 0.8;
   background: rgb(255, 255, 255);
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.3505777311) 0%, rgb(252, 234, 227) 41%);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.3505777311) 0%,
+    rgb(252, 234, 227) 41%
+  );
 }
 .header__container {
   display: flex;
@@ -138,7 +141,7 @@ body.menu-open {
   justify-content: center;
   min-height: 52px;
   -moz-column-gap: 35px;
-       column-gap: 35px;
+  column-gap: 35px;
 }
 .custom-logo-link {
   position: relative;
@@ -160,30 +163,60 @@ body.menu-open {
   column-gap: 35px;
   row-gap: 3px;
 }
-.menu__link {
+.menu__list li {
   font-family: "Poppins";
   font-weight: 400;
   font-size: 16px;
-  line-height: 1.5; /* 24px/16 */
-  color: #525252;
+  line-height: 1.5;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   position: relative;
-  transition: all 0.3s ease 0s;
 }
-.menu__link:hover {
-  color: #272727;
+.menu__list li:hover .sub-menu {
+  clip: auto;
+  width: auto;
+  height: auto;
+  margin: 0;
 }
-.menu__link:hover::before {
-  content: ".";
+.menu__list a {
+  color: #525252;
+  white-space: nowrap;
+}
+.menu__list a:hover {
+  color: #ff5f03;
+}
+.menu__list li:hover > a,
+a:hover {
+  color: #ff5f03;
+}
+.menu__list li a:active {
+  color: #ff5f03;
+}
+.menu__list a:focus {
+  color: #ff5f03;
+}
+.sub-menu {
   position: absolute;
-  color: red;
-  width: 100%;
-  height: 100%;
-  bottom: -2px;
-  left: 49%;
-  font-size: 22px;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  flex-direction: column;
 }
-
+.current-menu-item a {
+  color: #ff5f03;
+}
+.menu-item-has-children::after {
+  width: 0;
+  height: 0;
+  border: 4px solid transparent;
+  border-bottom: none;
+  border-top-color: #525252;
+  content: "";
+  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+  right: 0px;
+}
 .button {
   background: #ff7424;
   border-radius: 8px;
@@ -212,7 +245,6 @@ body.menu-open {
 .icon-menu {
   display: none;
 }
-
 @media (max-width: 991.98px) {
   .header {
     padding-top: 30px;
@@ -238,7 +270,9 @@ body.menu-open {
     z-index: 10;
     cursor: pointer;
   }
-  .icon-menu span, .icon-menu::before, .icon-menu::after {
+  .icon-menu span,
+  .icon-menu::before,
+  .icon-menu::after {
     content: "";
     left: 0;
     position: absolute;
@@ -296,16 +330,21 @@ body.menu-open {
   .menu__list {
     flex-direction: column;
     justify-content: center;
-    text-align: center;
+    text-align: left;
     row-gap: 10px;
   }
-  .menu__link {
+  .menu__list li {
     font-size: 32px;
   }
-  .menu__link:hover::before {
-    bottom: -25px;
-    left: 0;
-    font-size: 32px;
+  .menu__list li:hover .sub-menu {
+    position: absolute;
+    clip: auto;
+    width: auto;
+    height: auto;
+    margin: 0;
+    top: 0;
+    right: 0;
+    z-index: 11;
   }
 }
 .main__container {
@@ -745,12 +784,18 @@ body.menu-open {
 .testimonials-page__image {
   position: relative;
   background: rgb(255, 196, 86);
-  background: linear-gradient(0deg, rgba(255, 196, 86, 0.8967962185) 0%, rgb(255, 255, 255) 52%);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 196, 86, 0.8967962185) 0%,
+    rgb(255, 255, 255) 52%
+  );
   border-radius: 8px;
 }
 .testimonials-page__image::before {
   content: "";
-  background: rgba(255, 196, 86, 0.509) url(https://test-web22.github.io/trive-explore/img/testimonials/decor.png) 50% 50% no-repeat;
+  background: rgba(255, 196, 86, 0.509)
+    url(https://test-web22.github.io/trive-explore/img/testimonials/decor.png)
+    50% 50% no-repeat;
   position: absolute;
   width: 104px;
   height: 104px;
@@ -831,7 +876,7 @@ body.menu-open {
   padding: 5px 13px;
   background: rgba(175, 175, 175, 0.7);
   -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   /* Note: backdrop-filter has minimal browser support */
   border-radius: 8px;
 }
@@ -1054,7 +1099,7 @@ body.menu-open {
 .menu-footer__list :not(:last-child) {
   margin-bottom: 16px;
 }
-.menu-footer__link {
+.menu-footer__list a {
   font-family: "Poppins";
   font-weight: 400;
   font-size: 16px;
@@ -1062,8 +1107,8 @@ body.menu-open {
   color: #525252;
   position: relative;
 }
-.menu-footer__link:hover {
-  color: #272727;
+.menu-footer__list a:hover {
+  color: #000000;
 }
 
 .bottom-footer {
