@@ -16,11 +16,10 @@
 				<?php echo get_custom_logo(); ?>
 				<nav class="header__menu menu">
 					<div class="menu__body">
-						<?php wp_nav_menu(array(
+					<?php wp_nav_menu(array(
 					'theme_location' => 'top',
 					'container' => null,
-					'menu_class' => 'menu__list',//<ul>....</ul>
-					'menu_id' => 'menu__list'
+					'menu_class' => 'menu__list'//<ul>....</ul>
 				)); ?>
 					</div>
 				</nav>
