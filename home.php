@@ -13,7 +13,7 @@ Template Name: home
 					<p>A Tram of devoted and experienced tourism professionssionals will provide you with the best
 						advice and tips.</p>
 				</div>
-				<form action="#" class="search__form form-search">
+				<!-- <form action="#" class="search__form form-search">
 					<div class="form-search__body">
 						<div class="form-search__item">
 							<div class="form-search__label">Tour Name</div>
@@ -46,7 +46,7 @@ Template Name: home
 						</div>
 					</div>
 					<button type="submit" class="form-search__button button">Search</button>
-				</form>
+				</form> -->
 			</div>
 			<div class="main__images images-main">
 				<div class="images-main__column">
@@ -83,7 +83,7 @@ Template Name: home
 	</section>
 	<section class="page__explore explore-page">
 		<div class="explore-page__container">
-			<?php echo do_shortcode('[smartslider3 slider="2"]');?>
+			<?php echo do_shortcode('[smartslider3 slider="2"]'); ?>
 			<div class="explore-page__content">
 				<div class="explore-page__title">A new way to explore the world </div>
 				<div class="explore-page__text">
@@ -105,54 +105,36 @@ Template Name: home
 			</div>
 			<div class="destinations-page__popular">
 				<div class="destinations-page__items">
+					<?php
+					$my_posts = get_posts(array(
+						'numberposts' => 3,
+						'post_type'   => 'location',
+						'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+					));
+
+					foreach ($my_posts as $post) {
+						setup_postdata($post);
+						?>
 					<div class="destinations-page__column">
 						<div class="destinations-page__image">
-							<img src="<?php bloginfo('template_url'); ?>/assets/img/destinations/01.jpg"
-								alt="popular-destinations">
+							<?php the_post_thumbnail(); ?>
 						</div>
-						<a href="#" class="destinations-page__rating rating">
-							<h3 class="rating__title">Bali, Indonesia</h3>
+						<div href="#" class="destinations-page__rating rating">
+							<h3 class="rating__title"><?php the_title(); ?></h3>
 							<div class="rating__body">
 								<div class="rating__stars">
 									<img src="<?php bloginfo('template_url'); ?>/assets/img/destinations/star.png" alt="star">
-									<div class="rating__value">5.0 Superb</div>
+									<div class="rating__value"><?php the_content(); ?></div>
 								</div>
-								<div class="rating__price">$360</div>
+								<div class="rating__price"><?php the_excerpt(); ?></div>
 							</div>
-						</a>
-					</div>
-					<div class="destinations-page__column">
-						<div class="destinations-page__image">
-							<img src="<?php bloginfo('template_url'); ?>/assets/img/destinations/02.jpg"
-								alt="popular-destinations">
 						</div>
-						<a href="#" class="destinations-page__rating rating">
-							<h3 class="rating__title">Tokya, Japan</h3>
-							<div class="rating__body">
-								<div class="rating__stars">
-									<img src="<?php bloginfo('template_url'); ?>/assets/img/destinations/star.png" alt="star">
-									<div class="rating__value">3.9 Good</div>
-								</div>
-								<div class="rating__price">$429</div>
-							</div>
-						</a>
 					</div>
-					<div class="destinations-page__column">
-						<div class="destinations-page__image">
-							<img src="<?php bloginfo('template_url'); ?>/assets/img/destinations/03.jpg"
-								alt="popular-destinations">
-						</div>
-						<a href="#" class="destinations-page__rating rating">
-							<h3 class="rating__title">Dylan, Turkey</h3>
-							<div class="rating__body">
-								<div class="rating__stars">
-									<img src="<?php bloginfo('template_url'); ?>/assets/img/destinations/star.png" alt="star">
-									<div class="rating__value">5.0 Superb</div>
-								</div>
-								<div class="rating__price">$490</div>
-							</div>
-						</a>
-					</div>
+					<?php
+				}
+				wp_reset_postdata();
+				?>
+
 				</div>
 			</div>
 		</div>
@@ -184,16 +166,16 @@ Template Name: home
 			</div>
 			<div class="trending-page__items items-trending-page">
 				<?php
-						global $post;
-						$myposts = get_posts([ 
-							'numberposts' => 4,
-							'category'		=> 2
-						]);
+				global $post;
+				$myposts = get_posts([
+					'numberposts' => 4,
+					'category'		=> 2
+				]);
 
-						if( $myposts ){
-							foreach( $myposts as $post ){
-								setup_postdata( $post );
-								?>
+				if ($myposts) {
+					foreach ($myposts as $post) {
+						setup_postdata($post);
+				?>
 				<div class="items-trending-page__item">
 					<?php the_post_thumbnail(); ?>
 					<div class="items-trending-page__body">
@@ -203,7 +185,9 @@ Template Name: home
 						<h3 class="items-trending-page__title"><?php the_title(); ?></h3>
 					</div>
 				</div>
-				<?php }} wp_reset_postdata(); ?>
+				<?php }
+				}
+				wp_reset_postdata(); ?>
 			</div>
 		</div>
 	</section>

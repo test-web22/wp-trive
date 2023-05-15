@@ -355,6 +355,10 @@ a:hover {
 }
 .main__search {
   flex: 0 1 58%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .main__images {
   flex: 0 1 41%;
@@ -378,12 +382,10 @@ a:hover {
 .search__text:not(:last-child) {
   margin-bottom: 82px;
 }
-.search__form {
-  margin-bottom: 50px;
-}
-
-.form-search {
+.nf-form-content {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
   padding: 15px;
   background: #ffffff;
   border: 1px solid #efefef;
@@ -392,12 +394,13 @@ a:hover {
   margin-bottom: 14px;
   gap: 21px;
 }
-.form-search__body {
+.nf-fields-wrap {
   display: flex;
+  flex-direction: row;
   flex: 1 1 auto;
   gap: 21px;
 }
-.form-search__item {
+.nf-element {
   position: relative;
   flex: 1 1 148px;
   color: #000;
@@ -411,17 +414,32 @@ a:hover {
     width: 260px;
   }
 }
-.form-search__label {
+.nf-field-label {
   font-family: "Poppins";
   font-size: 12px;
   line-height: 150%; /* 18px/12 */
   color: #000000;
   padding-left: 15px;
 }
-.form-search__button {
+
+#nf-field-8 {
   box-shadow: none;
-  align-self: flex-end;
+  align-self: end;
   margin-bottom: 0;
+  background: #ff7424;
+  border-radius: 8px;
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  padding: 14px 32px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 5px;
+  transition: all 0.3s ease 0s;
+}
+#nf-field-8:hover {
+  background: #ff5f03;
 }
 
 .images-main {
@@ -475,7 +493,7 @@ a:hover {
   }
 }
 @media (max-width: 479.98px) {
-  .form-search {
+  .wpcf7-form {
     flex-direction: column;
   }
   .form-search__body {
